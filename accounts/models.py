@@ -70,12 +70,10 @@ class CalculatorUser(AbstractBaseUser):
     objects = CalculatorUserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = [
-        'name', 'password'
-    ]
+    REQUIRED_FIELDS = ['name']
 
     def __str__(self):
-        return self.name or self.email
+        return self.name
 
     def has_perm(self, perm, obj=None):
         return True
