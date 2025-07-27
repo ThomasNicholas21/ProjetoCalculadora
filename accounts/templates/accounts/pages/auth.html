@@ -1,0 +1,15 @@
+{% extends "global/base.html" %}
+
+{% block content %}
+
+<div class="box auth-box">
+    <div class="form-toggle">
+        {% include "accounts/partials/_login.html" %}
+        {% include "accounts/partials/_signup.html" %}
+    </div>
+    <div id="login-form" class="form-wrapper">
+        {% include "accounts/partials/_form.html" %}
+    </div>
+</div>
+
+{% endblock content %}

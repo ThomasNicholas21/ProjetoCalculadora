@@ -1,0 +1,5 @@
+<button class="{% if request.resolver_match.url_name == 'login-view' %}toggle-btn active{% else %}toggle-btn{% endif %}">
+    <a href="{% url "accounts:login-view" %}">
+        Login
+    </a>
+</button>
