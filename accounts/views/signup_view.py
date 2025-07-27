@@ -1,26 +1,19 @@
-from django.shortcuts import render, redirect
+from django.views.generic.edit import FormView
+from django.urls import reverse_lazy
 from django.contrib import messages
 from accounts.forms import SignUpForm
 
 
-def signup(request):
-    form = SignUpForm()
+class SignUpView(FormView):
+    template_name = 'accounts/pages/auth.html'
+    form_class = SignUpForm
+    success_url = reverse_lazy('accounts:login-view')
 
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
+    def form_valid(self, form):
+        form.save()
+        messages.success(self.request, 'Cadastro realizado com sucesso!')
+        return super().form_valid(form)
 
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Logado com sucesso!')
-            return redirect('accounts:login-view')
-
-        messages.error(request, 'Login Inválido')
-
-    context = {
-        'form': form
-    }
-    return render(
-        request,
-        'accounts/pages/auth.html',
-        context
-    )
+    def form_invalid(self, form):
+        messages.error(self.request, 'Erro ao cadastrar. Verifique os dados.')
+        return super().form_invalid(form)

@@ -1,28 +1,21 @@
-from django.shortcuts import render, redirect
+from django.contrib.auth.views import LoginView
 from django.contrib import messages
+from django.urls import reverse_lazy
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib import auth
 
 
-def login(request):
-    form = AuthenticationForm(request)
+class CustomLoginView(LoginView):
+    template_name = 'accounts/pages/auth.html'
+    form_class = AuthenticationForm
+    redirect_authenticated_user = True
+    success_url = reverse_lazy('calculator:calculator-view')
 
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
+    def form_valid(self, form):
+        messages.success(self.request, 'Logado com sucesso!')
 
-        if form.is_valid():
-            user = form.get_user()
-            auth.login(request, user)
-            messages.success(request, 'Logado com sucesso!')
-            return redirect('accounts:signup-view')
+        return super().form_valid(form)
 
-        messages.error(request, 'Login Inválido')
+    def form_invalid(self, form):
+        messages.error(self.request, 'Login inválido')
 
-    context = {
-        'form': form
-    }
-    return render(
-        request,
-        'accounts/pages/auth.html',
-        context
-    )
+        return super().form_invalid(form)
