@@ -4,7 +4,7 @@ from django.contrib import messages
 from accounts.forms import SignUpForm
 
 
-class SignUpView(FormView):
+class CalculatorSignUpView(FormView):
     template_name = 'accounts/pages/auth.html'
     form_class = SignUpForm
     success_url = reverse_lazy('accounts:login-view')

@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.forms import AuthenticationForm
 
 
-class CustomLoginView(LoginView):
+class CalculatorLoginView(LoginView):
     template_name = 'accounts/pages/auth.html'
     form_class = AuthenticationForm
     redirect_authenticated_user = True
@@ -19,3 +19,6 @@ class CustomLoginView(LoginView):
         messages.error(self.request, 'Login inválido')
 
         return super().form_invalid(form)
+
+    def get_success_url(self):
+        return self.success_url
