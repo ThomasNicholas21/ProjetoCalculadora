@@ -37,10 +37,13 @@ class CalculatorView(LoginRequiredMixin, TemplateView):
         except Exception:
             messages.error(request, 'Erro ao avaliar a expressão!')
 
+        if isinstance(result, float) and result.is_integer():
+            result = int(result)
+
         Operation.objects.create(
             user=request.user,
-            parameters=expression,
-            result=result
+            parameters=str(expression),
+            result=str(result)
         )
 
         context.update(
