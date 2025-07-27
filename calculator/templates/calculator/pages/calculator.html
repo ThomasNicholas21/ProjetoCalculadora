@@ -1,0 +1,152 @@
+{% extends "global/base.html" %}
+
+
+{% block content %}
+<div class="calculator-title">
+    <h1>
+        Calculadora Aritmética
+    </h1>
+    <h4>
+        Calculadora com histórico de operações.
+    </h4>
+    <form method="post" class="logout-view" action="{% url 'accounts:logout-view' %}">
+        {% csrf_token %}
+        <button type="submit"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+    </form>
+</div>
+{% include "partials/_messages.html" %}
+<div class="container-calculator">
+    <div class="box calculator-box">
+        <div class="calculator-display" id="display" data-result="{{ result|stringformat:'s'|default:'0' }}">
+            {{ result|stringformat:"s" }}
+        </div>
+        {% include "calculator/partials/_layout_calculator.html" %}
+    </div>
+    <div class="box operation-box">
+        <div class="operation-title">
+            <h3>
+                <i class="fa-solid fa-clock-rotate-left"></i> Histórico
+            </h3>
+            <form method="post" action="{% url 'calculator:delete-view' %}">
+                {% csrf_token %}
+                <button type="submit" title="Resetar histórico">
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </form>
+        </div>
+        <div class="operations">
+            {% if operations %}
+                {% for operation in operations %}
+                    {% include "calculator/partials/_card_operation.html" %}
+                {% endfor %}
+            {% else %}
+                <p class='no-content'>
+                    Sem histórico por aqui!
+                </p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<script>
+    const display = document.getElementById('display');
+    const expressionInput = document.getElementById('expression');
+    let expression = '';
+    let justCalculated = false;
+
+    const operators = ['+', '-', '*', '/', '%'];
+
+    function updateDisplay() {
+        const visualExpr = expression
+            .replace(/\*/g, '×')
+            .replace(/\//g, '÷');
+        display.textContent = visualExpr || '0';
+    }
+
+    function appendValue(value) {
+        if (justCalculated) {
+            if (!operators.includes(value)) {
+                // Se o último resultado foi calculado e o próximo valor é número, inicie nova expressão
+                expression = value;
+            } else {
+                // Se for operador, continue o cálculo normalmente
+                expression += value;
+            }
+            justCalculated = false;
+        } else {
+            if (operators.includes(value)) {
+                if (expression === '' || operators.includes(expression.slice(-1))) {
+                    expression = expression.slice(0, -1) + value;
+                } else {
+                    expression += value;
+                }
+            } else {
+                expression += value;
+            }
+        }
+
+        updateDisplay();
+    }
+
+    function clearDisplay() {
+        expression = '';
+        justCalculated = false;
+        updateDisplay();
+    }
+
+    function removeLastChar() {
+        expression = expression.slice(0, -1);
+        justCalculated = false;
+        updateDisplay();
+    }
+
+    function negValue() {
+        if (expression !== '') {
+            try {
+                const result = eval(expression);
+                expression = String(result * -1);
+                justCalculated = true;
+                updateDisplay();
+            } catch (e) {
+                // erro silencioso
+            }
+        }
+    }
+
+    function calculateResult() {
+        if (expression === '' || operators.includes(expression.slice(-1))) {
+            return;
+        }
+        expressionInput.value = expression;
+        document.getElementById('calculator-form').submit();
+        justCalculated = true;
+    }
+
+    window.onload = () => {
+        const result = display.dataset.result;
+        if (result && result !== '0') {
+            expression = result;
+            justCalculated = true;
+        }
+        updateDisplay();
+    }
+
+    document.addEventListener('keydown', function (event) {
+        const key = event.key;
+
+        if (!isNaN(key) || key === '.') {
+            appendValue(key);
+        } else if (['+', '-', '*', '/'].includes(key)) {
+            appendValue(key);
+        } else if (key === 'Enter') {
+            event.preventDefault();  // Evita envio duplicado
+            calculateResult();
+        } else if (key === 'Backspace') {
+            removeLastChar();
+        } else if (key === 'Escape') {
+            clearDisplay();
+        }
+    });
+</script>
+
+
+{% endblock content %}
