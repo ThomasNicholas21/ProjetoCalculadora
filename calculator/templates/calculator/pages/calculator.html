@@ -65,10 +65,8 @@
     function appendValue(value) {
         if (justCalculated) {
             if (!operators.includes(value)) {
-                // Se o último resultado foi calculado e o próximo valor é número, inicie nova expressão
                 expression = value;
             } else {
-                // Se for operador, continue o cálculo normalmente
                 expression += value;
             }
             justCalculated = false;
@@ -107,7 +105,6 @@
                 justCalculated = true;
                 updateDisplay();
             } catch (e) {
-                // erro silencioso
             }
         }
     }
@@ -138,7 +135,7 @@
         } else if (['+', '-', '*', '/'].includes(key)) {
             appendValue(key);
         } else if (key === 'Enter') {
-            event.preventDefault();  // Evita envio duplicado
+            event.preventDefault();
             calculateResult();
         } else if (key === 'Backspace') {
             removeLastChar();

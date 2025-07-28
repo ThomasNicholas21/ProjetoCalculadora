@@ -1,44 +1,31 @@
 :root {
-/* Cores Coletadas */
-/* --port-gore: #2f2353;
---roman: #d6575d;
---electric-violet: #8938eb;
---honey-flower1: #541c81; 
---honey-flower2: #4a1c77; 
---gigas: #58358e;
---mirage: #131627;
---manatee: #9195a3;
---rum: #6f5a7c;
---comet: #5b637b; */
---color-dark-text: #444;
---color-info-light: #cce5ff;
---color-debug-light: #cce5ff;
---color-success-light: #d4edda;
---color-alert-light: #fff3cd;
---color-warning-light: #fff3cd;
---color-error-light: #f8d7da;
---primary-bg-color: #302253;
---shadow-color: rgba(0, 0, 0, 0.1);
---toggle-inactive-color: #c7c2e4;
---toggle-active-color: #ffffff;
---toggle-hover-color: #9333ea;
---toggle-indicator-color: #9333ea;
---border-color: rgba(255, 255, 255, 0.1);
---input-text-color: white;
---error-color: #ff6b6b;
---help-text-color: #a5a3b9;
---help-text-alt-color: #8e8bff;
---error-bg-color: rgba(255, 107, 107, 0.1);
---error-hover-bg: rgba(255, 107, 107, 0.2);
---btn-text-color: #c7c2e4;
---btn-hover-bg: rgba(147, 51, 234, 0.1);
-/* background color */
---color-background: #581c87;
---color-background-mid: #2f1953; 
---color-background-dark: #1a1838; 
+    --color-dark-text: #444;
+    --color-info-light: #cce5ff;
+    --color-debug-light: #cce5ff;
+    --color-success-light: #d4edda;
+    --color-alert-light: #fff3cd;
+    --color-warning-light: #fff3cd;
+    --color-error-light: #f8d7da;
+    --primary-bg-color: #302253;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --toggle-inactive-color: #c7c2e4;
+    --toggle-active-color: #ffffff;
+    --toggle-hover-color: #9333ea;
+    --toggle-indicator-color: #9333ea;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --input-text-color: white;
+    --error-color: #ff6b6b;
+    --help-text-color: #a5a3b9;
+    --help-text-alt-color: #8e8bff;
+    --error-bg-color: rgba(255, 107, 107, 0.1);
+    --error-hover-bg: rgba(255, 107, 107, 0.2);
+    --btn-text-color: #c7c2e4;
+    --btn-hover-bg: rgba(147, 51, 234, 0.1);
+    --color-background: #581c87;
+    --color-background-mid: #2f1953;
+    --color-background-dark: #1a1838;
 }
 
-/* default style */
 * {
     padding: 0;
     margin: 0;
@@ -62,10 +49,8 @@ body {
     ) !important;
 }
 
-/* box component - componente reutilizavel */
-
 .box {
-    background-color: var(--primary-bg-color); 
+    background-color: var(--primary-bg-color);
     border-radius: 8px;
     padding: 2rem;
     box-shadow: 0 4px 6px var(--shadow-color);
@@ -74,9 +59,6 @@ body {
     border: 1px solid #523385;
 }
 
-/* login */
-
-/* Container de autenticação - tamanho fixo */
 .auth-box {
     margin: 2rem auto;
     width: 40rem;
@@ -85,14 +67,12 @@ body {
     flex-direction: column;
 }
 
-/* container toggle btn */
 .form-toggle {
     display: flex;
     margin-bottom: 1.5rem;
     border-bottom: 1px solid var(--border-color);
 }
 
-/* style toggle btn */
 .toggle-btn {
     flex: 1;
     padding: 0.75rem 1rem;
@@ -132,7 +112,6 @@ body {
     height: 100%;
 }
 
-/* style form */
 .form-wrapper {
     width: 100%;
     flex-grow: 1;
@@ -140,7 +119,6 @@ body {
     flex-direction: column;
 }
 
-/* Estilos para o formulário */
 .form-wrapper form {
     display: flex;
     flex-direction: column;
@@ -236,7 +214,6 @@ body {
     border-radius: 4px;
 }
 
-/* Estilo do botão de submit */
 .btn {
     background: transparent;
     color: var(--btn-text-color);
@@ -266,6 +243,14 @@ body {
 
 .calculator-title {
     margin-top: 2rem;
+    color: var(--input-text-color);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .calculator-title h4{
@@ -273,41 +258,9 @@ body {
     font-size: small;
 }
 
-/* Calculator title */
-.calculator-title {
-    color: var(--input-text-color);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding-left: 50px; /* Espaço suficiente para o ícone */
-    padding-right: 50px;
-}
-
-/* logout */
-/* Calculator title */
-.calculator-title {
-    color: var(--input-text-color);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding-right: 50px;
-}
-
-/* logout */
-/* Calculator title */
-.calculator-title {
-    color: var(--input-text-color);
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    position: relative; /* Referência para posicionamento absoluto */
-    width: 100%; /* Garante que o container ocupe toda a largura */
-}
-
-/* logout - agora alinhado à direita */
 .logout-view {
     position: absolute;
-    right: 20px; /* Muda de 'left' para 'right' */
+    right: 20px;
     top: 50%;
     transform: translateY(-50%);
     text-decoration: none;
@@ -318,7 +271,6 @@ body {
     border: none;
 }
 
-/* Ajuste para o ícone */
 .logout-view i {
     color: var(--input-text-color);
     font-size: 1.5rem;
@@ -330,8 +282,6 @@ body {
     color: #f87171;
 }
 
-
-/* Box da calculadora */
 .calculator-box {
     padding: 2rem;
     min-height: 22rem;
@@ -341,7 +291,6 @@ body {
     width: 740px;
 }
 
-/* Display */
 .calculator-display {
     overflow-x: auto;
     background: #151932;
@@ -357,35 +306,30 @@ body {
     scrollbar-color: #b19acc transparent;
 }
 
-/* WebKit (Chrome, Edge, Safari) */
 .calculator-display::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 }
 
 .calculator-display::-webkit-scrollbar-track {
-  background: transparent;
+    background: transparent;
 }
 
 .calculator-display::-webkit-scrollbar-thumb {
-  background-color: #b19acc;
-  border-radius: 10px;
-  border: 2px solid transparent; /* dá espaço ao redor */
-  background-clip: content-box;
+    background-color: #b19acc;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
 }
 
 .calculator-display::-webkit-scrollbar-thumb:hover {
-  background-color: #a485c9;
+    background-color: #a485c9;
 }
 
-/* Container dos botões */
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0.75rem;
 }
-
-
-/* Botões padrão */
 
 .buttons button{
     height: 3rem;
@@ -457,33 +401,30 @@ body {
 }
 
 .operations {
-  overflow-y: auto;
-  max-height: 95%;
-  margin-top: 0.5rem;
-
-  /* Firefox */
-  scrollbar-width: thin;
-  scrollbar-color: #b19acc transparent;
+    overflow-y: auto;
+    max-height: 95%;
+    margin-top: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: #b19acc transparent;
 }
 
-/* WebKit (Chrome, Edge, Safari) */
 .operations::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 }
 
 .operations::-webkit-scrollbar-track {
-  background: transparent;
+    background: transparent;
 }
 
 .operations::-webkit-scrollbar-thumb {
-  background-color: #b19acc;
-  border-radius: 10px;
-  border: 2px solid transparent; /* dá espaço ao redor */
-  background-clip: content-box;
+    background-color: #b19acc;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
 }
 
 .operations::-webkit-scrollbar-thumb:hover {
-  background-color: #a485c9;
+    background-color: #a485c9;
 }
 
 .operation-box {
@@ -491,7 +432,7 @@ body {
 }
 
 .card-operation {
-    background-color: #231d44; 
+    background-color: #231d44;
     border-radius: 8px;
     margin-top: 0.5rem;
     padding: 8px;
@@ -521,9 +462,8 @@ body {
     font-size: x-small;
 }
 
-/* no content operations */
 .no-content {
-    background-color: #231d44; 
+    background-color: #231d44;
     border-radius: 8px;
     margin-top: 0.5rem;
     padding: 8px;
@@ -531,7 +471,6 @@ body {
     color: #c2cad8;
 }
 
-/* Messages */
 .message-content {
     width: 100%;
     display: flex;
@@ -540,45 +479,45 @@ body {
 }
 
 .message {
-  padding: 1rem;
-  border-radius: 4px;
-  border: 1px solid var(--color-dark-text);
-  background: var(--color-gray-2);
-  color: var(--color-dark-text);
+    padding: 1rem;
+    border-radius: 4px;
+    border: 1px solid var(--color-dark-text);
+    background: var(--color-gray-2);
+    color: var(--color-dark-text);
 }
 
 .message-error {
-  border: 1px solid var(--color-error-dark);
-  background: var(--color-error-light);
-  color: var(--color-error-dark);
+    border: 1px solid var(--color-error-dark);
+    background: var(--color-error-light);
+    color: var(--color-error-dark);
 }
 
 .message-success {
-  border: 1px solid var(--color-success-dark);
-  background: var(--color-success-light);
-  color: var(--color-success-dark);
+    border: 1px solid var(--color-success-dark);
+    background: var(--color-success-light);
+    color: var(--color-success-dark);
 }
 
 .message-warning {
-  border: 1px solid var(--color-warning-dark);
-  background: var(--color-warning-light);
-  color: var(--color-warning-dark);
+    border: 1px solid var(--color-warning-dark);
+    background: var(--color-warning-light);
+    color: var(--color-warning-dark);
 }
 
 .message-alert {
-  border: 1px solid var(--color-alert-dark);
-  background: var(--color-alert-light);
-  color: var(--color-alert-dark);
+    border: 1px solid var(--color-alert-dark);
+    background: var(--color-alert-light);
+    color: var(--color-alert-dark);
 }
 
 .message-info {
-  border: 1px solid var(--color-info-dark);
-  background: var(--color-info-light);
-  color: var(--color-info-dark);
+    border: 1px solid var(--color-info-dark);
+    background: var(--color-info-light);
+    color: var(--color-info-dark);
 }
 
 .message-debug {
-  border: 1px solid var(--color-debug-dark);
-  background: var(--color-debug-light);
-  color: var(--color-debug-dark);
+    border: 1px solid var(--color-debug-dark);
+    background: var(--color-debug-light);
+    color: var(--color-debug-dark);
 }
