@@ -5,7 +5,7 @@ from parameterized import parameterized
 
 class TestCalculatorModel(TestCalculatorFixture):
     def setUp(self):
-        self.calculator = self.meke_operation()
+        self.calculator = self.make_operation()
         return super().setUp()
 
     @parameterized.expand(

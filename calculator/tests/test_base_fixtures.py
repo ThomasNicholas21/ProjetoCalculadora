@@ -19,7 +19,7 @@ class TestCalculatorFixture(TestCase):
             password=password
         )
 
-    def meke_operation(
+    def make_operation(
         self,
         user=None,
         parameters='1 + 1 - 1',

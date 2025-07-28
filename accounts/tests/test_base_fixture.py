@@ -29,3 +29,11 @@ class TestAccountsFixture(TestCase):
             email=email,
             password=password
         )
+
+    def make_form_data(self):
+        return {
+            'name': 'Test Nicholas',
+            'email': 'test@gmail.com',
+            'password1': '123456',
+            'password2': '123456'
+        }
