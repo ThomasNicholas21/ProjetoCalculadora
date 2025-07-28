@@ -10,12 +10,18 @@ class CalculatorLoginView(LoginView):
     redirect_authenticated_user = True
     success_url = reverse_lazy('calculator:calculator-view')
 
-    def form_valid(self, form):
+    def get_context_data(self, **kwargs) -> dict:
+        context: dict = super().get_context_data(**kwargs)
+        context['title'] = 'Tela de Login'
+
+        return context
+
+    def form_valid(self, form: AuthenticationForm):
         messages.success(self.request, 'Logado com sucesso!')
 
         return super().form_valid(form)
 
-    def form_invalid(self, form):
+    def form_invalid(self, form: AuthenticationForm):
         messages.error(self.request, 'Login inválido')
 
         return super().form_invalid(form)
