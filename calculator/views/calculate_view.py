@@ -17,6 +17,7 @@ class CalculatorView(LoginRequiredMixin, TemplateView):
 
         context['result'] = 0
         context['operations'] = operations
+        context['title'] = 'Calculadora'
 
         return context
 
