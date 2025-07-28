@@ -16,6 +16,7 @@ class Calc(ast.NodeVisitor):
     def visit_BinOp(self, node):
         left = self.visit(node.left)
         right = self.visit(node.right)
+
         return _OP_MAP[type(node.op)](left, right)
 
     def visit_Num(self, node):
@@ -28,4 +29,5 @@ class Calc(ast.NodeVisitor):
     def evaluate(cls, expression):
         tree = ast.parse(expression)
         calc = cls()
+
         return calc.visit(tree.body[0])
