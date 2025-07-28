@@ -1,18 +1,18 @@
 # Projeto Calculadora Aritmética Avançada
 
-Este projeto é uma calculadora aritmética avançada, que permite cálculos complexos, obedecendo os princípios da matemática. Tem em vista isso, foi utiliza o conceito de design pattern comportamental Visitor, no qual possibilitou a criação de uma árvore de sintaxe abstrata utilizando o módulo **ast** do *Python*, no qual possibilitou a leitura de expressões matemáticas.
+Este projeto é uma calculadora aritmética avançada, que permite cálculos complexos, obedecendo os princípios da matemática. Tendo vista isso, foi utilizado o conceito de design pattern comportamental Visitor, no qual possibilitou a criação de uma árvore de sintaxe abstrata utilizando o módulo **ast** do *Python*, no qual possibilitou a leitura de expressões matemáticas.
 
-Para esse projeto foi utilizado a framework *Django*, que possibilitou criar um aplicação *Full Stack*, que contempla **Front End** ( Templates ) e **Back End** ( Models e Views ). Foi desenvolvido e pensado com a intenção de atender todos os requisitos da atividade, obedecendo um template. 
+Para esse projeto foi utilizada a framework *Django*, que possibilitou criar um aplicação *Full Stack*, que contempla **Front End** ( Templates ) e **Back End** ( Models e Views ). Foi desenvolvido e pensado com a intenção de atender todos os requisitos da atividade, de acordo com o protótipo. 
 
 ## Funcionalidades  
-- Possui um redirecionador de página, caso seja acessado sem o caminho da URL
-- Possui um sistema de autenticação personalizado, utilizando **AbstractBaseUser**
-- Possui um *form* de cadastro para o usuário
-- Possui uma calculadora avançada, que possui histórico
-- Possui integração direta com números e operadores do teclado.
-- Possui um botão para limpar o histórico caso o usuário queira
-- Possui tratamento de erro para operações inválidas ( Por exemplo, ZeroDivisionError )
-- Possui um botão de LogOut caso o usuário queira sair
+- Possui um redirecionador de página, caso seja acessado sem o caminho da URL;
+- Possui um sistema de autenticação personalizado, utilizando **AbstractBaseUser**;
+- Possui um *form* de cadastro para o usuário;
+- Possui uma calculadora avançada com histórico;
+- Possui integração direta com números e operadores do teclado;
+- Possui um botão para limpar o histórico caso o usuário queira;
+- Possui tratamento de erros para operações inválidas ( Por exemplo, divisão por zero );
+- Possui um botão de LogOut caso o usuário queira sair.
   
 
 ## Tecnologias Utilizadas
